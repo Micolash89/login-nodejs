@@ -1,0 +1,258 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+@import url(variables.css);
+
+/* font-family: 'Poppins', sans-serif; */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--black);
+} */
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background: url("/img/bg.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+  animation: animateBg 5s linear infinite;
+}
+
+@keyframes animateBg {
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+.login-box,
+.register-box {
+  position: relative;
+  width: 400px;
+  height: 450px;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: var(--radius-1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(15px);
+}
+
+.register-box {
+  height: 600px;
+}
+
+h2 {
+  font-size: var(--txt-2);
+  color: var(--white);
+  text-align: center;
+}
+
+.input-box {
+  position: relative;
+  width: 310px;
+  margin: 30px 0;
+  border-bottom: 2px solid var(--white);
+}
+
+.input-box label {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  font-size: var(--txt-1);
+  color: var(--white);
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+.input-box input:focus ~ label,
+.input-box input:valid ~ label {
+  top: -5px;
+}
+
+.input-box input {
+  width: 100%;
+  height: 50px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: var(--txt-1);
+  color: var(--white);
+  padding: 0 35px 0 5px;
+}
+
+.input-box .icon {
+  position: absolute;
+  right: 8px;
+  color: var(--white);
+  font-size: var(--txt-3);
+  line-height: 57px;
+}
+
+.input-box .icon .icon__open:hover,
+.input-box .icon .icon__closed:hover {
+  color: var(--black);
+  cursor: pointer;
+}
+
+.remember-forgot {
+  margin: -15px 0 15px;
+  font-size: var(--txt-4);
+  color: var(--white);
+  display: flex;
+  justify-content: space-between;
+}
+
+.remember-forgot label input {
+  margin-right: 3px;
+}
+
+.remember-forgot a {
+  color: var(--white);
+  text-decoration: none;
+}
+
+.remember-forgot a:hover {
+  text-decoration: underline;
+}
+
+.icon__open {
+  display: none;
+}
+
+button {
+  width: 100%;
+  height: 40px;
+  background: var(--white);
+  border: none;
+  outline: none;
+  border-radius: var(--radius-2);
+  cursor: pointer;
+  font-size: var(--txt-1);
+  color: var(--black);
+  font-weight: 500;
+}
+
+.github__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 0;
+}
+
+.github__button {
+  /* display: inline-block; */
+  width: max-content;
+  padding: 0px 15px;
+  border-radius: 12px;
+}
+.register-link {
+  font-size: var(--txt-4);
+  color: var(--white);
+  text-align: center;
+  margin: 10px 0 10px;
+}
+
+.register-link p a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.register-link p a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 360px) {
+  .login-box,
+  .register-box {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 0;
+  }
+
+  .input-box {
+    width: 290px;
+  }
+}
+
+/*button*/
+.button {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--txt-1);
+  gap: 10px;
+  padding: 0px 15px;
+  background-color: red;
+  border-radius: var(--radius-2);
+  border: none;
+  color: var(--black);
+  position: relative;
+  cursor: pointer;
+  font-weight: 500;
+  transition-duration: 0.5s;
+  /*background: linear-gradient(0deg, #000, #272727);*/
+  background: var(--white);
+}
+
+.button:before,
+.button:after {
+  content: "";
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  border-radius: var(--radius-2);
+  background: linear-gradient(
+    45deg,
+    #fb0094,
+    #0000ff,
+    #00ff00,
+    #ffff00,
+    #ff0000,
+    #fb0094,
+    #0000ff,
+    #00ff00,
+    #ffff00,
+    #ff0000
+  );
+  background-size: 400%;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  z-index: -1;
+  animation: steam 20s linear infinite;
+}
+
+@keyframes steam {
+  0% {
+    background-position: 0 0;
+  }
+
+  50% {
+    background-position: 400% 0;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.button:after {
+  filter: blur(50px);
+}

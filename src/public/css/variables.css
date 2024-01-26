@@ -1,0 +1,13 @@
+:root {
+  --black: black;
+  --white: white;
+  --red: red;
+
+  --radius-1: 20px;
+  --radius-2: 40px;
+
+  --txt-1: 1rem;
+  --txt-2: 2rem;
+  --txt-3: 1.5rem;
+  --txt-4: 0.9rem;
+}

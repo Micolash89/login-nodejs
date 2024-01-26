@@ -1,0 +1,19 @@
+<div>
+    {{#if status}}
+        <h2>nombre {{profile.first_name}}</h2>
+        <h2>apellido {{profile.last_name}}</h2>
+    {{else}}
+        <h2>no estas logueado</h2>
+        <button>
+        <a href="http://localhost:8080/api/sessions/login">login</a>
+
+        </button>
+        <br>
+
+        <button>
+
+        <a href="http://localhost:8080/api/sessions/registrar">registrar</a>
+        </button>
+
+    {{/if}}
+</div>

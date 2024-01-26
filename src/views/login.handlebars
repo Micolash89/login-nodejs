@@ -1,0 +1,92 @@
+{{! <form action="login" method="post">
+
+<label for="">
+    usuario
+    <input type="text" name="email">
+</label>
+<br>
+<label for="">
+    constraseña
+    <input type="password" name="password">
+</label>
+<br>
+    <input type="button" >
+    <button type="submit">iniciar sesion</button>
+</form>
+
+<button>
+    <a href="http://localhost:8080/api/sessions/restorepassword">RESTAURAR PASSWORD</a>
+</button> }}
+
+<section>
+
+  <div class="login-box">
+    <form action="login" method="post">
+      <h2>Login</h2>
+      <div class="input-box">
+        <span class="icon">
+          <ion-icon name="mail"></ion-icon>
+        </span>
+        <input type="email" required name="email" />
+        <label for="">
+          Email
+        </label>
+      </div>
+
+      <div class="input-box">
+        <span class="icon">
+          <div class="icon__open">
+            <ion-icon name="lock-open"></ion-icon>
+          </div>
+          <div class="icon__closed">
+            <ion-icon name="lock-closed"></ion-icon>
+          </div>
+        </span>
+        <input type="password" required name="password" id="password" />
+        <label for="password">
+          Password
+        </label>
+      </div>
+
+      <div class="remember-forgot">
+        <label>
+          <input type="checkbox" />
+          Remember me
+        </label>
+        <a href="http://localhost:8080/api/sessions/restorepassword">Forgot
+          Password?</a>
+      </div>
+
+      <button class="button" type="submit">Login</button>
+
+      <div class="github__container">
+        <button class="github__button" type="button">
+          <ion-icon name="logo-github"></ion-icon>
+          Github
+          <a href=""></a>
+        </button>
+
+      </div>
+
+      <div class="register-link">
+        <p>
+          Don't have an account?
+          <a href="http://localhost:8080/api/sessions/restorepassword">Register
+            Now</a>
+        </p>
+      </div>
+
+    </form>
+  </div>
+
+</section>
+
+<script src="/js/registrar.js"></script>
+<script
+  type="module"
+  src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+></script>
+<script
+  nomodule
+  src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+></script>

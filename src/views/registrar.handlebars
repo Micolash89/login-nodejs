@@ -1,0 +1,83 @@
+<section>
+  <div class="register-box">
+
+    <form action="registrar" method="post">
+      <h2>Register Form</h2>
+      <div class="input-box">
+        <span class="icon">
+          <ion-icon name="person"></ion-icon>
+        </span>
+        <input type="text" required name="first_name" id="first_name" />
+        <label for="first_name">
+          First Name
+        </label>
+      </div>
+      <div class="input-box">
+        <span class="icon">
+          <ion-icon name="person"></ion-icon>
+        </span>
+        <input type="text" required name="last_name" id="last_name" />
+        <label for="last_name">
+          Last Name
+        </label>
+      </div>
+      <div class="input-box">
+        <span class="icon">
+          <ion-icon name="mail"></ion-icon>
+        </span>
+        <input type="email" required name="email" id="email" />
+        <label for="email">
+          Email
+        </label>
+      </div>
+
+      <div class="input-box">
+        <span class="icon">
+          <ion-icon name="body"></ion-icon>
+        </span>
+        <input type="number" required name="age" id="age" />
+        <label for="age">
+          Age
+        </label>
+      </div>
+
+      <div class="input-box">
+        <span class="icon">
+          <div class="icon__open">
+            <ion-icon name="lock-open"></ion-icon>
+          </div>
+          <div class="icon__closed">
+            <ion-icon name="lock-closed"></ion-icon>
+          </div>
+        </span>
+        <input type="password" required name="password" id="password" />
+        <label for="password">
+          Password
+        </label>
+      </div>
+
+      <button type="submit">Register User</button>
+    </form>
+
+  </div>
+</section>
+
+<div>
+  {{#if status}}
+    <h3>se pudo crear</h3>
+  {{else}}
+    <h3>no se pudo crear</h3>
+  {{/if}}
+
+</div>
+
+<script src="/js/registrar.js"></script>
+
+<script
+  type="module"
+  src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+></script>
+<script
+  nomodule
+  src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+></script>
