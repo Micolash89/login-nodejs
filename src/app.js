@@ -9,6 +9,12 @@ import sessionRouter from './routers/session.router.js';
 import mongoose from 'mongoose';
 import passport from 'passport';
 import initializePassport from './config/passport.config.js';
+import dotenv from 'dotenv'
+try {
+    dotenv.config();
+} catch (error) {
+    console.log('error');
+}
 
 const app = express();
 app.use(cookieParser());
@@ -20,7 +26,7 @@ app.engine('handlebars', handlebars.engine());
 app.set('views', __dirname + '/views');
 app.set('view engine', 'handlebars');
 
-mongoose.connect("mongodb+srv://admin:admin@integrador-e-commerce.2igzkgv.mongodb.net/?retryWrites=true&w=majority");
+mongoose.connect(process.env.URL_MONGODB);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -28,7 +34,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(session({
 
     store: MongoStore.create({
-        mongoUrl: "mongodb+srv://admin:admin@integrador-e-commerce.2igzkgv.mongodb.net/?retryWrites=true&w=majority",
+        mongoUrl: process.env.URL_MONGODB,
         //ttl: 15,//sino esta este parametro del tiempo de vida de la session por default dura 2 semanas
     }),
 

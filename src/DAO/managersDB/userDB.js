@@ -10,6 +10,8 @@ export default class UserDB {
 
     getOne = async (obj) => await userModel.find({ _id: obj._id });
 
+    getOneId = async (id) => await userModel.find({ _id: id });
+
     findEmail = async (email) => await userModel.findOne({ email: email }, { email: 1, first_name: 1, last_name: 1, password: 1 }).lean();
 
     existEmail = async (email, password) => await userModel.exists({ email: email });

@@ -51,7 +51,7 @@ section {
 }
 
 .register-box {
-  height: 600px;
+  height: 700px;
 }
 
 h2 {
@@ -164,6 +164,18 @@ button {
   color: var(--white);
   text-align: center;
   margin: 10px 0 10px;
+}
+
+.github__button--a:visited {
+  color: var(--black);
+}
+
+.github__button--a:active {
+  color: var(--black);
+}
+
+.github__button--a {
+  text-decoration: none;
 }
 
 .register-link p a {

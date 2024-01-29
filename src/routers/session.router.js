@@ -10,9 +10,19 @@ const userDB = new UserDB();
 
 sessionRouter.get('/login', (req, res) => {
 
-    //    const { first_name, last_name } = req.body;
+    console.log(req.session.errorData);
 
-    res.render('login', { style: 'login.css' });
+    res.render('login', (!req.session.errorData) ? { style: 'login.css' } : req.session.errorData);
+});
+
+sessionRouter.get('/github', passport.authenticate('github', { scope: ['user:email'] }), async (req, res) => {
+    res.render('perfil', { profile: req.session.user });
+});
+
+sessionRouter.get('/githubcallback', passport.authenticate('github', { failureRedirect: '/login' }), async (req, res) => {
+    req.session.user = req.user;
+    console.log('session', req.session.user);
+    res.redirect('/api/sessions/perfil');
 });
 
 // sessionRouter.post('/login', async (req, res) => {
@@ -42,9 +52,11 @@ sessionRouter.get('/login', (req, res) => {
 
 // });
 
-sessionRouter.post('/login', passport.authenticate('login', { failureRedirect: '/faillogin' }), async (req, res) => {
+sessionRouter.post('/login', passport.authenticate('login', { failureRedirect: '/api/sessions/faillogin' }), async (req, res) => {
 
-    if (!req.user) return res.status(400).send({ status: 'error', message: 'error.message' });
+    if (!req.user) return res.status(400).send({ status: 'error', message: 'error user' });
+    // return res.render('login', req.errorData);
+
 
     req.session.user = {
         first_name: req.user.first_name,
@@ -58,14 +70,20 @@ sessionRouter.post('/login', passport.authenticate('login', { failureRedirect: '
 });
 
 sessionRouter.get('/faillogin', (req, res) => {
-    res.send({ error: 'fallo el login' });
+
+    req.session.errorData = { error: true, style: 'login.css' };
+    console.log(req.session.errorData);
+
+    res.redirect('/api/sessions/login')
+
+    //res.redirect('/api/sessions/login', { error: true, style: 'login.css' });
 });
 
 
 
 sessionRouter.get('/perfil', (req, res) => {
 
-    res.render('perfil', { status: false });
+    res.render('perfil', (req.session.user) ? { status: true, profile: req.session.user } : { status: false });
 
 });
 
@@ -75,27 +93,6 @@ sessionRouter.get('/registrar', (req, res) => {
 
 });
 
-// sessionRouter.post('/registrar', async (req, res) => {
-
-//     try {
-//         const body = req.body;
-
-//         body.password = createHash(req.body.password);
-
-//         const resp = await userDB.createOne(body);
-
-//         // if (!resp) {
-//         //     return new Error('no se puedo crear el usuario');
-//         // }
-
-//         res.render('registrar', { status: true });
-//     } catch (error) {
-//         console.log(error);
-
-//         res.status(500).render('registrar', { status: false, message: error.message });
-//     }
-
-// });
 
 sessionRouter.post('/registrar', passport.authenticate('registrar', { failureRedirect: '/failregistrar' }), async (req, res) => {
 
@@ -111,19 +108,19 @@ sessionRouter.get('/failregistrar', async (req, res) => {
 sessionRouter.get('/logout', (req, res) => {
     req.session.destroy(err => {
         if (err) {
-            return res.json({ status: 'Logout ERROR', body: err })
+            return res.json({ status: 'Logout ERROR', body: err });
         }
-        res.send('Logout ok!')
-    })
+        res.send('Logout ok!');
+    });
 });
 
 
 function auth(req, res, next) {
 
     if (req.session?.email === 'nn@nn') {
-        return next()
+        return next();
     }
-    return res.status(401).send('error de autorización!')
+    return res.status(401).send('error de autorización!');
 }
 
 sessionRouter.get('/privado', auth, (req, res) => {

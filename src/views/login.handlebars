@@ -60,26 +60,33 @@
       <button class="button" type="submit">Login</button>
 
       <div class="github__container">
-        <button class="github__button" type="button">
-          <ion-icon name="logo-github"></ion-icon>
-          Github
-          <a href=""></a>
-        </button>
+        <a class="github__button--a" href="/api/sessions/github">
+          <button class="github__button" type="button">
+            <ion-icon name="logo-github"></ion-icon>
+            Github
+          </button>
+        </a>
 
       </div>
 
       <div class="register-link">
         <p>
           Don't have an account?
-          <a href="http://localhost:8080/api/sessions/restorepassword">Register
-            Now</a>
+          <a href="http://localhost:8080/api/sessions/registrar">Register Now</a>
         </p>
       </div>
 
     </form>
   </div>
-
 </section>
+
+<div>
+  {{#if error}}
+    <p>
+      Invalid login credentials. Please try again.
+    </p>
+  {{/if}}
+</div>
 
 <script src="/js/registrar.js"></script>
 <script
